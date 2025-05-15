@@ -8,14 +8,19 @@ const taskSlice = createSlice({
     name:"tasks",
     initialState,
     reducers:{
-        incriment:(state,action) => {
-            state.task.push(action.payload)
+        addTask:(state,{payload}) => {
+            if(state.task.length === 0 ){
+                state.task.push({id: 1, ...payload})
+            }else{
+                let lastElement = state.task.at(-1)
+                state.task.push({id:lastElement.id + 1, ...payload})
+            }
         },
-        decrement:(state,action) =>{
+        removeTask:(state,action) =>{
             state.task.pop(action.payload)
         }
     }
 })
 
-export const {incriment,decrement} = taskSlice.actions;
+export const {addTask,removeTask} = taskSlice.actions;
 export default taskSlice.reducer;

@@ -1,14 +1,19 @@
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTask } from '../redux/feature/taskSlice'
 
 export default function Modal({ isOpen, setIsOpen }) {
   //   let [isOpen, setIsOpen] = useState(false)
 
   const { register, reset, handleSubmit } = useForm()
+  const {task} = useSelector((state) => state.taskStore)
+  const dispatch = useDispatch()
+  console.log(task,"tasks")
 
   const onSubmitForm = (data) => {
-    console.log(data)
+    dispatch(addTask(data))
     setIsOpen(false)
     handleCancel()
   }
@@ -21,11 +26,11 @@ export default function Modal({ isOpen, setIsOpen }) {
       {/* <button onClick={() => setIsOpen(true)}>Open dialog</button> */}
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="md:w-[40vw] h-[90vh] overflow-y-auto rounded-lg shadow-md space-y-4 border bg-white p-12">
+          <DialogPanel className="md:w-[40vw] h-[90vh]  rounded-lg shadow-md space-y-4 border bg-white p-12">
             <DialogTitle className="font-bold">Fill up the Info</DialogTitle>
             {/* <Description>This will permanently deactivate your account</Description> */}
-            <form onSubmit={handleSubmit(onSubmitForm)}>
-              <div className='space-y-4'>
+            <form onSubmit={handleSubmit(onSubmitForm)} className='flex flex-col min-h-0 h-full justify-between'>
+              <div className='space-y-4 flex-1 overflow-y-auto min-h-0'>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="title">Title</label>
                   <input type="text" id="title" {...register("title")} className='rounded-md' />
@@ -55,7 +60,7 @@ export default function Modal({ isOpen, setIsOpen }) {
                   </select>
                 </div>
               </div>
-              <div className='flex gap-3 justify-end'>
+              <div className='flex gap-3 justify-end '>
 
               <button onClick={handleCancel} className='px-[10px] flex py-[6px] bg-red-500 border hover:bg-red-600 border-green-200 rounded-lg mt-3 text-white'  >cancel</button>
               <button className='px-[10px]  py-[6px] bg-green-500 hover:bg-green-600 border border-green-200 rounded-lg mt-3 text-white' type='submit'>submit</button>
