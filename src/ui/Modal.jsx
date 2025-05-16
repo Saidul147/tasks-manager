@@ -10,7 +10,7 @@ export default function Modal({ isOpen, setIsOpen }) {
   const { register, reset, handleSubmit } = useForm()
   const {task} = useSelector((state) => state.taskStore)
   const dispatch = useDispatch()
-  console.log(task,"tasks")
+  
 
   const onSubmitForm = (data) => {
     dispatch(addTask(data))

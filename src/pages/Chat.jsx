@@ -18,8 +18,8 @@ const Chat = () => {
       <h1 onClick={() => dispatch(removeTask(5))}>pop</h1> */}
       
       <h2>chat</h2>
-      <button onClick={() => setIsOpen(!isOpen)}>modal</button>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <button onClick={() => setIsOpen(!isOpen)}>modal</button>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </div>
   );
 };

@@ -3,11 +3,19 @@ import MyTasks from '../components/tasks/MyTasks';
 import TaskCard from '../components/tasks/TaskCard';
 import { useState } from 'react';
 import Modal from '../ui/Modal';
+import { useSelector } from 'react-redux';
 
 const Tasks = () => {
 
   
   let [isOpen, setIsOpen] = useState(false)
+
+  const {task:tasks} = useSelector((state) => state.taskStore)
+  const pending = tasks.filter((tsk) => tsk.status === "pending")
+  const running = tasks.filter((tsk) => tsk.status === "running")
+  const done = tasks.filter((tsk) => tsk.status === "done")
+
+  console.log(tasks)
 
   return (
     <div className="h-screen grid grid-cols-12">
@@ -39,34 +47,39 @@ const Tasks = () => {
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>Up Next</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+                {pending.length}
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
+              {pending?.map((task) => (
+                <TaskCard task ={task} key={task.id} />
+              ))}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>In Progress</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+               {running.length}
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
-              <TaskCard />
+               {running?.map((task) => (
+                <TaskCard task ={task} key={task.id} />
+              ))}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>Up Next</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+                {done.length}
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
+               {done?.map((task) => (
+                <TaskCard task ={task} key={task.id} />
+              ))}
             </div>
           </div>
         </div>
