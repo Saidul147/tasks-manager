@@ -56,6 +56,7 @@ export default function Modal({ isOpen, setIsOpen }) {
                   <label htmlFor="priority">Priority</label>
                   <select id="priority" {...register("priority")} >
                     <option value="Low">Low</option>
+                    <option value="Low">Medium</option>
                     <option value="High">High</option>
                   </select>
                 </div>
