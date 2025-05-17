@@ -8,7 +8,7 @@ export default function Modal({ isOpen, setIsOpen }) {
   //   let [isOpen, setIsOpen] = useState(false)
 
   const { register, reset, handleSubmit } = useForm()
-  const {task} = useSelector((state) => state.taskStore)
+
   const dispatch = useDispatch()
   
 
