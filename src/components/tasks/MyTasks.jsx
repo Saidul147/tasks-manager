@@ -2,6 +2,8 @@ import {
   CheckIcon,
   DocumentMagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
+import { useDispatch, useSelector } from 'react-redux';
+import { add } from '../../redux/feature/userSlice';
 
 const MyTasks = () => {
   const item = {
@@ -14,6 +16,10 @@ const MyTasks = () => {
     assignedTo: 'Mir Hussain',
     priority: 'high',
   };
+
+  const user = useSelector((state) => state.userStore)
+
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -28,7 +34,7 @@ const MyTasks = () => {
             <button className="grid place-content-center" title="Details">
               <DocumentMagnifyingGlassIcon className="w-5 h-5 text-primary" />
             </button>
-            <button className="grid place-content-center" title="Done">
+            <button onClick={()=> dispatch(add("karim"))}  className="grid place-content-center" title="Done">
               <CheckIcon className="w-5 h-5 text-primary" />
             </button>
           </div>

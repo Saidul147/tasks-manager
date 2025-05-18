@@ -36,8 +36,8 @@ export default function Modal({ isOpen, setIsOpen }) {
                   <input type="text" id="title" {...register("title")} className='rounded-md' />
                 </div>
                 <div className='flex flex-col gap-2'>
-                  <label htmlFor="descript">Description</label>
-                  <input type="text" id="descript" {...register("descript")} className='rounded-md' />
+                  <label htmlFor="description">Description</label>
+                  <input type="text" id="description" {...register("description")} className='rounded-md' />
                 </div>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="deadline">Deadline</label>
