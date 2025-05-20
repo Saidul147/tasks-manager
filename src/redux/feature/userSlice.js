@@ -3,7 +3,8 @@ import reducer from "./taskSlice";
 
 
 const initialState = {
-    name:"Rakib"
+    name:"Mir Hussain",
+    email:"rakib@gmail.com"
 }
 
 const userSlice = createSlice({

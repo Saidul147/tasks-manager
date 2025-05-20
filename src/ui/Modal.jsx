@@ -45,8 +45,9 @@ export default function Modal({ isOpen, setIsOpen }) {
                 </div>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="assign">Assign To</label>
-                  <select id="assign" {...register("assign")} defaultValue="select" >
+                  <select id="assign" {...register("assign")} defaultValue="select" className='rounded-md'>
                     {/* <option value="" disabled defaultValue="Select">Selct</option> */}
+                    <option  value="Mir Hussain">Mir Hussain</option>
                     <option value="Rahim">Rahim</option>
                     <option value="Karim">Karim</option>
                     <option value="Tarin">Tarin</option>
@@ -54,7 +55,7 @@ export default function Modal({ isOpen, setIsOpen }) {
                 </div>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="priority">Priority</label>
-                  <select id="priority" {...register("priority")} >
+                  <select className='rounded-md' id="priority" {...register("priority")} >
                     <option value="Low">Low</option>
                     <option value="Low">Medium</option>
                     <option value="High">High</option>
