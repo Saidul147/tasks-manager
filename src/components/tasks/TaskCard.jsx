@@ -4,7 +4,7 @@ import { removeTask, updateStatus } from '../../redux/feature/taskSlice';
 
 const TaskCard = ({task}) => {
 
-  console.log(task,"tasksss")
+
 
   const dispatch = useDispatch()
 
